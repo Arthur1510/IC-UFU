@@ -30,6 +30,7 @@ public:
         vertices.emplace_back(x, y);
     }
 
+    //verificar ordem da lista
     void ensureCounterClockwise() {
         if (isClockwise()) {
             std::reverse(vertices.begin(), vertices.end());
@@ -76,6 +77,8 @@ public:
         return translatedVertices;
     }
 
+
+    //verificar essa lógica
     void cutByHorizontalLine(double yCut) {
         std::vector<Point> newVertices;
         int n = vertices.size();
@@ -100,6 +103,7 @@ public:
             }
         }
 
+        //verificar ordem de inserção desses novos vértices
         vertices = std::move(newVertices);
         ensureCounterClockwise();
     }
@@ -115,6 +119,9 @@ public:
     }
 };
 
+
+//não precisa criar um novo polígo de compressão
+// adicionar os novos vértices de interseção à lista de vértices da seção
 class ReferencePolygon {
 private:
     std::vector<Point> vertices;
